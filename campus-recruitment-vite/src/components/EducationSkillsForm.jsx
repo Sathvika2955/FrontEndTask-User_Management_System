@@ -62,25 +62,25 @@ const EducationSkillsForm = ({ data, setData }) => {
                         <Row className="mb-3">
                             <Col md={6}>
                                 <Form.Label>School / College</Form.Label>
-                                <Form.Control name="college" placeholder="e.g. Lincoln College" value={edu.college} onChange={(e) => handleEducationChange(index, e)} />
+                                <Form.Control name="college" placeholder="e.g. Lincoln College"  onChange={(e) => handleEducationChange(index, e)} />
                             </Col>
                             <Col md={6}>
                                 <Form.Label>Highest degree or equivalent</Form.Label>
-                                <Form.Control name="degree" placeholder="e.g. Bachelors in Technology" value={edu.degree} onChange={(e) => handleEducationChange(index, e)} />
+                                <Form.Control name="degree" placeholder="e.g. Bachelors in Technology" onChange={(e) => handleEducationChange(index, e)} />
                             </Col>
                         </Row>
                         <Row className="mb-3">
                             <Col md={6}>
                                 <Form.Label>Course</Form.Label>
-                                <Form.Control name="course" placeholder="e.g. Computer science engineering" value={edu.course} onChange={(e) => handleEducationChange(index, e)} />
+                                <Form.Control name="course" placeholder="e.g. Computer science engineering"  onChange={(e) => handleEducationChange(index, e)} />
                             </Col>
                             <Col md={3}>
                                 <Form.Label>Year of completion</Form.Label>
-                                <Form.Control name="year" placeholder="YYYY" value={edu.year} onChange={(e) => handleEducationChange(index, e)} />
+                                <Form.Control name="year" placeholder="YYYY"  onChange={(e) => handleEducationChange(index, e)} />
                             </Col>
                             <Col md={3}>
                                 <Form.Label>Grade</Form.Label>
-                                <Form.Control name="grade" placeholder="Enter here" value={edu.grade} onChange={(e) => handleEducationChange(index, e)} />
+                                <Form.Control name="grade" placeholder="Enter here"  onChange={(e) => handleEducationChange(index, e)} />
                             </Col>
                         </Row>
                     </Card>
@@ -107,7 +107,7 @@ const EducationSkillsForm = ({ data, setData }) => {
                             as="textarea" 
                             rows={3} 
                             placeholder="Enter here (e.g., React, Node.js, Bootstrap)" 
-                            value={data.skills ? data.skills.join(', ') : ''}
+                            
                             onChange={handleSkillsChange}
                         />
                     </Col>
@@ -116,9 +116,9 @@ const EducationSkillsForm = ({ data, setData }) => {
                         <Form.Control 
                             as="textarea" 
                             rows={3} 
-                            placeholder="Enter here (e.g., Project Alpha, My Portfolio)" 
-                            value={data.projects ? data.projects.join(', ') : ''}
+                            placeholder="Enter here" 
                             onChange={handleProjectsChange}
+                            
                         />
                     </Col>
                 </Row>
