@@ -34,7 +34,6 @@ const BasicDetailsForm = ({ data, setData }) => {
                             type="text" 
                             name="firstName"
                             placeholder="e.g. John"
-                            value={data.firstName || ''}
                             onChange={handleFieldChange}
                         />
                     </Col>
@@ -44,7 +43,6 @@ const BasicDetailsForm = ({ data, setData }) => {
                             type="text" 
                             name="lastName"
                             placeholder="e.g. Doe"
-                            value={data.lastName || ''}
                             onChange={handleFieldChange}
                         />
                     </Col>
@@ -54,7 +52,6 @@ const BasicDetailsForm = ({ data, setData }) => {
                             type="email" 
                             name="email"
                             placeholder="e.g. mmddbdy@gmail.com"
-                            value={data.email || ''}
                             onChange={handleFieldChange}
                         />
                     </Col>
@@ -68,7 +65,6 @@ const BasicDetailsForm = ({ data, setData }) => {
                             type="text" 
                             name="yearOfBirth"
                             placeholder="YYYY" 
-                            value={data.yearOfBirth || ''}
                             onChange={handleFieldChange}
                         />
                     </Col>
@@ -86,8 +82,7 @@ const BasicDetailsForm = ({ data, setData }) => {
                         <Form.Control 
                             type="tel" 
                             name="phone"
-                            placeholder="+91 833..."
-                            value={data.phone || ''}
+                            placeholder="+91 8331525695"
                             onChange={handleFieldChange}
                         />
                     </Col>
@@ -97,7 +92,6 @@ const BasicDetailsForm = ({ data, setData }) => {
                             type="tel" 
                             name="alternatePhone"
                             placeholder="e.g. 9876543210"
-                            value={data.alternatePhone || ''}
                             onChange={handleFieldChange}
                         />
                     </Col>
@@ -112,7 +106,6 @@ const BasicDetailsForm = ({ data, setData }) => {
                             rows={3} 
                             name="address"
                             placeholder="Enter here" 
-                            value={data.address || ''}
                             onChange={handleFieldChange}
                         />
                     </Col>
@@ -124,21 +117,20 @@ const BasicDetailsForm = ({ data, setData }) => {
                                     type="text"
                                     name="pincode"
                                     placeholder="Enter here" 
-                                    value={data.pincode || ''}
                                     onChange={handleFieldChange}
                                 />
                             </Col>
                             <Col sm={6} className="mb-3">
                                 <Form.Label>Domicile state</Form.Label>
-                                <Form.Select name="domicileState" value={data.domicileState || ''} onChange={handleFieldChange}>
-                                    <option value="">Select an option</option>
+                                <Form.Select name="domicileState" onChange={handleFieldChange}>
+                                    <option >Select an option</option>
                                     <option value="Maharashtra">Maharashtra</option>
                                     <option value="Karnataka">Karnataka</option>
                                 </Form.Select>
                             </Col>
                             <Col sm={6} className="mb-3">
                                 <Form.Label>Domicile country</Form.Label>
-                                <Form.Select name="domicileCountry" value={data.domicileCountry || ''} onChange={handleFieldChange}>
+                                <Form.Select name="domicileCountry"  onChange={handleFieldChange}>
                                     <option value="">Select an option</option>
                                     <option value="India">India</option>
                                     <option value="USA">USA</option>

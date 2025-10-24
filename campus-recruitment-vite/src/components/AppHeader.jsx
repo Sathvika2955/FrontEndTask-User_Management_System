@@ -1,43 +1,93 @@
-
-import React from 'react';
-import { Nav } from 'react-bootstrap';
-import { MdOutlineHeadsetMic } from "react-icons/md";
+import React from "react";
 import { FiBell, FiUser } from "react-icons/fi";
-
+import { MdOutlineHeadsetMic } from "react-icons/md";
 
 const AppHeader = () => {
+  const styles = {
+    header: {
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "center",
+      padding: "8px 30px",
+      borderBottom: "1px solid #ddd",
+      backgroundColor: "#fff",
+    },
+    logoContainer: {
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      gap: "2px", // smaller gap between box and text
+    },
+    logoBox: {
+      border: "2px solid #000",
+      padding: "4px 12px",
+      fontWeight: "900",
+      fontSize: "26px", // 🔹 bigger text
+      letterSpacing: "-2px", // 🔹 tighter spacing between letters
+      lineHeight: "1",
+    },
+    logoText: {
+      textAlign: "center",
+      lineHeight: "1",
+    },
+    logoTextP: {
+      margin: 0,
+      fontSize: "6px", // small so box stands out
+      fontWeight: "500",
+      letterSpacing: "0.3px",
+      color: "#444",
+    },
+    icons: {
+      display: "flex",
+      alignItems: "center",
+      gap: "14px",
+    },
+    icon: {
+      fontSize: "20px",
+      cursor: "pointer",
+      color: "#000",
+      transition: "transform 0.2s ease, color 0.2s ease",
+    },
+  };
+
+  const handleMouseEnter = (e) => {
+    e.target.style.transform = "scale(1.1)";
+    e.target.style.color = "#007bff";
+  };
+  const handleMouseLeave = (e) => {
+    e.target.style.transform = "scale(1)";
+    e.target.style.color = "#000";
+  };
+
   return (
-    <header
-      className="custom-header"
-      style={{
-        width: "100%",
-        minHeight: 100,
-        display: "flex",
-        alignItems: "flex-start",
-        justifyContent: "space-between",
-        padding: "16px 32px"
-      }}
-    >
-      <div className="logo-stack">
-        <div className="logo-box">
-          <span className="logo-text">LOGO</span>
+    <header style={styles.header}>
+      {/* Logo Section */}
+      <div style={styles.logoContainer}>
+        <div style={styles.logoBox}>LOGO</div>
+        <div style={styles.logoText}>
+          <p style={styles.logoTextP}>ESTD</p>
+          <p style={styles.logoTextP}>2025</p>
         </div>
-        <div className="logo-estd">ESTD</div>
-        <div className="logo-year">2025</div>
       </div>
-      <Nav className="header-icons">
-  <Nav.Link href="#support" className="icon-link">
-    <MdOutlineHeadsetMic size={24} color="#18181B" />
-  </Nav.Link>
-  <Nav.Link href="#notifications" className="icon-link">
-    <FiBell size={24} color="#18181B" />
-  </Nav.Link>
-  <Nav.Link href="#profile" className="icon-link profile-icon-link">
-    <span className="profile-avatar">
-      <FiUser size={28} color="#6834ff" />
-    </span>
-  </Nav.Link>
-</Nav>
+
+      {/* Icons Section */}
+      <div style={styles.icons}>
+        <MdOutlineHeadsetMic
+          style={styles.icon}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        />
+        <FiBell
+          style={styles.icon}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        />
+        <FiUser
+          style={styles.icon}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        />
+      </div>
     </header>
   );
 };
