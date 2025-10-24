@@ -30,7 +30,7 @@ const AddUserModal = ({ show, handleClose, users, setUsers }) => {
         const firstName = nameParts[0] || 'New';
         const lastName = nameParts.length > 1 ? nameParts.slice(1).join(' ') : 'User';
 
-        // Create the New User Object with default empty arrays/values for completeness
+        
         const newUser = {
             id: getNextId(users),
             firstName,

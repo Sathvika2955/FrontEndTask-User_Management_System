@@ -1,7 +1,9 @@
 
 import React from 'react';
 import { Nav } from 'react-bootstrap';
-import { FiHeadphones, FiBell, FiUser } from 'react-icons/fi';
+import { MdOutlineHeadsetMic } from "react-icons/md";
+import { FiBell, FiUser } from "react-icons/fi";
+
 
 const AppHeader = () => {
   return (
@@ -24,18 +26,18 @@ const AppHeader = () => {
         <div className="logo-year">2025</div>
       </div>
       <Nav className="header-icons">
-        <Nav.Link href="#support" className="icon-link">
-          <FiHeadphones size={24} />
-        </Nav.Link>
-        <Nav.Link href="#notifications" className="icon-link">
-          <FiBell size={24} />
-        </Nav.Link>
-        <Nav.Link href="#profile" className="icon-link profile-icon-link">
-          <span className="profile-avatar">
-            <FiUser size={24} />
-          </span>
-        </Nav.Link>
-      </Nav>
+  <Nav.Link href="#support" className="icon-link">
+    <MdOutlineHeadsetMic size={24} color="#18181B" />
+  </Nav.Link>
+  <Nav.Link href="#notifications" className="icon-link">
+    <FiBell size={24} color="#18181B" />
+  </Nav.Link>
+  <Nav.Link href="#profile" className="icon-link profile-icon-link">
+    <span className="profile-avatar">
+      <FiUser size={28} color="#6834ff" />
+    </span>
+  </Nav.Link>
+</Nav>
     </header>
   );
 };

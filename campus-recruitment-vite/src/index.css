@@ -1,4 +1,4 @@
-/* RESET AND BASE STYLES */
+
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
 
 html, body, #root {
@@ -10,14 +10,14 @@ html, body, #root {
   background-color: #f7f8fa;
 }
 
-/* Center app content */
+
 .app-container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem 1rem;
 }
 
-/* Card / Panel look */
+
 .card {
   border: 1px solid #e5e7eb !important;
   border-radius: 12px !important;
@@ -25,7 +25,7 @@ html, body, #root {
   background-color: #ffffff;
 }
 
-/* Buttons */
+
 .btn-primary {
   background-color: #7b6ef6;
   border: none;
@@ -34,14 +34,13 @@ html, body, #root {
   background-color: #695be0;
 }
 
-/* Search bar styling */
+
 .search-box input {
   border: 1px solid #e5e7eb;
   border-radius: 8px;
   padding: 8px 12px;
 }
 
-/* Tables */
 .table {
   border: none;
   margin-bottom: 0;
@@ -56,7 +55,7 @@ html, body, #root {
   color: #374151;
 }
 
-/* Delete button */
+
 .action-btn {
   background-color: #f3f4f6;
   border: none;
@@ -69,7 +68,7 @@ html, body, #root {
   background-color: #e5e7eb;
 }
 
-/* User name link */
+
 .user-link {
   color: #6b5df6;
   text-decoration: none;
@@ -78,18 +77,22 @@ html, body, #root {
   text-decoration: underline;
 }
 
-/* Profile placeholder */
-.profile-placeholder {
-  width: 90px;
-  height: 90px;
-  border-radius: 50%;
-  background-color: #e0e0ff;
+
+.profile-avatar {
   display: flex;
-  justify-content: center;
   align-items: center;
-  font-size: 2rem;
-  color: #8c8cff;
+  justify-content: center;
+  border-radius: 50%;                       
+  background: rgb(114, 83, 208,0.7);         
+  border: 1.5px solid #6834ff;            
+  width: 40px;
+  height: 40px;
+  box-sizing: border-box;
 }
+
+
+
+
 
 /* Tabs */
 .nav-tabs {
