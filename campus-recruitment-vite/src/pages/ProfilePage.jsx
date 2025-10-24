@@ -1,170 +1,164 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { Container, Row, Col, Card, Button, Tabs, Tab } from 'react-bootstrap';
-import { BiPencil } from 'react-icons/bi';
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import { FiCopy } from "react-icons/fi";
-
-import BasicDetailsForm from '../components/BasicDetailsForm';
-import EducationSkillsForm from '../components/EducationSkillsForm';
-import ExperienceForm from '../components/ExperienceForm';
+import BasicDetailsForm from "../components/BasicDetailsForm";
+import EducationSkillsForm from "../components/EducationSkillsForm";
+import ExperienceForm from "../components/ExperienceForm";
 
 const ProfilePage = ({ users, setUsers }) => {
   const { id } = useParams();
   const userId = parseInt(id);
-
   const initialData = users.find((u) => u.id === userId);
   const [profileData, setProfileData] = useState(initialData || {});
-  const [loading, setLoading] = useState(true);
-  const [activeTab, setActiveTab] = useState('basic');
+  const [activeTab, setActiveTab] = useState("basic");
 
   useEffect(() => {
-    if (initialData) {
-      setProfileData(initialData);
-      setLoading(false);
-    } else {
-      setLoading(false);
-    }
+    if (initialData) setProfileData(initialData);
   }, [users, userId, initialData]);
 
   const handleProfileUpdate = () => {
-    if (!profileData.firstName || !profileData.email) {
-      console.error('Please fill in required basic details.');
-      return;
-    }
-
     const userIndex = users.findIndex((u) => u.id === profileData.id);
-
-    if (userIndex === -1) {
-      console.error('Error: User not found in global list.');
-      return;
+    if (userIndex !== -1) {
+      const updatedUsers = [...users];
+      updatedUsers[userIndex] = profileData;
+      setUsers(updatedUsers);
     }
-
-    const updatedUsers = [
-      ...users.slice(0, userIndex),
-      profileData,
-      ...users.slice(userIndex + 1),
-    ];
-
-    setUsers(updatedUsers);
-    console.log('Profile Updated Successfully!');
   };
 
-  if (loading) {
-    return (
-      <Container fluid className="p-5 text-center">
-        Loading profile...
-      </Container>
-    );
-  }
-
-  if (!profileData.id) {
-    return (
-      <Container fluid className="p-5 text-center">
-        User not found.
-      </Container>
-    );
-  }
-
-  const AvatarIcon = () => {
-    return (
-      <div className="profile-avatar">
-        <svg
-          width="40"
-          height="40"
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M12 12C14.7614 12 17 9.76142 17 7C17 4.23858 14.7614 2 12 2C9.23858 2 7 4.23858 7 7C7 9.76142 9.23858 12 12 12ZM12 14C8.13401 14 2 15.79 2 19V21H22V19C22 15.79 15.866 14 12 14Z"
-            fill="#8C4FFF"
-          />
-        </svg>
-      </div>
-    );
-  };
-
-  // Helper for custom tab title with orange dot
-  const tabLabel = (label, eventKey) => (
-  <div style={{ position: "relative", display: "inline-block", paddingRight: 18 }}>
-    {eventKey === "education" && (
-      <span style={{
-        position: "absolute",
-        top: -5,
-        right: -8,
-        width: 12,
-        height: 12,
-        background: "#ff7d1a",
+  const AvatarIcon = () => (
+    <div
+      className="d-flex align-items-center justify-content-center"
+      style={{
+        width: 90,
+        height: 90,
         borderRadius: "50%",
-        zIndex: 1,
-        boxShadow: "0 0 0 2px #fff"
-      }} />
-    )}
-    <span>{label}</span>
-  </div>
-);
+        background: "rgba(140, 79, 255, 0.1)",
+      }}
+    >
+      <svg
+        width="48"
+        height="48"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M12 12C14.7614 12 17 9.76142 17 7C17 4.23858 14.7614 2 12 2C9.23858 2 7 4.23858 7 7C7 9.76142 9.23858 12 12 12ZM12 14C8.13401 14 2 15.79 2 19V21H22V19C22 15.79 15.866 14 12 14Z"
+          fill="#8C4FFF"
+        />
+      </svg>
+    </div>
+  );
 
+  const renderTabContent = () => {
+    switch (activeTab) {
+      case "basic":
+        return <BasicDetailsForm data={profileData} setData={setProfileData} />;
+      case "education":
+        return (
+          <EducationSkillsForm data={profileData} setData={setProfileData} />
+        );
+      case "experience":
+        return <ExperienceForm data={profileData} setData={setProfileData} />;
+      default:
+        return null;
+    }
+  };
 
   return (
-    <Container fluid className="py-4 px-5">
-      <Card className="shadow-sm p-4">
-        <Row className="mb-4 align-items-center border-bottom pb-3">
-
-          <Col xs="auto" className="me-4">
+    <Container fluid className="py-4 px-5 bg-light min-vh-100">
+      <Card
+        className="shadow-sm mx-auto border-0"
+        style={{
+          maxWidth: "1200px",
+          borderRadius: "20px",
+          backgroundColor: "#fff",
+        }}
+      >
+        {/* Header */}
+        <Row className="align-items-center border-bottom px-4 py-4">
+          <Col xs="auto">
             <AvatarIcon />
           </Col>
-
           <Col>
-            <h3 className="mb-0">
+            <h4 className="mb-0 fw-semibold">
               {profileData.firstName} {profileData.lastName}
-            </h3>
-            <div className="d-flex align-items-center gap-2">
-              <span className="mb-0">{profileData.email}</span>
+            </h4>
+            <div className="d-flex align-items-center gap-2 mt-1">
+              <span className="text-muted">{profileData.email}</span>
               {profileData.email && (
                 <FiCopy
-                  size={18}
-                  className="copy-email-icon"
-                  onClick={() => navigator.clipboard.writeText(profileData.email)}
-                  title="Copy email"
-                  style={{ cursor: 'pointer', opacity: 0.75 }}
+                  size={16}
+                  onClick={() =>
+                    navigator.clipboard.writeText(profileData.email)
+                  }
+                  style={{ cursor: "pointer", opacity: 0.7 }}
+                  title="Copy Email"
                 />
               )}
             </div>
-            <p className="text-muted mb-0">{profileData.phone}</p>
+            <p className="text-muted small mb-0">{profileData.phone}</p>
           </Col>
-
           <Col xs="auto">
-            <Button variant="outline-secondary" onClick={handleProfileUpdate}>
+            <Button
+              variant="outline-secondary"
+              className="rounded-pill px-3"
+              onClick={handleProfileUpdate}
+            >
               Save Changes
             </Button>
           </Col>
         </Row>
 
-        <Tabs
-          id="profile-tabs"
-          className="mb-4"
-          activeKey={activeTab}
-          onSelect={(k) => setActiveTab(k)}
+        {/* Tabs */}
+        <div
+          className="d-flex justify-content-start gap-3 border-bottom px-4 pt-3 pb-2"
+          style={{
+            background: "#fff",
+          }}
         >
-          <Tab
-            eventKey="basic"
-            title={tabLabel("Basic Info", "basic")}
-          >
-            <BasicDetailsForm data={profileData} setData={setProfileData} />
-          </Tab>
-          <Tab
-            eventKey="education"
-            title={tabLabel("Education & Skills", "education")}
-          >
-            <EducationSkillsForm data={profileData} setData={setProfileData} />
-          </Tab>
-          <Tab
-            eventKey="experience"
-            title={tabLabel("Experience", "experience")}
-          >
-            <ExperienceForm data={profileData} setData={setProfileData} />
-          </Tab>
-        </Tabs>
+          {[
+            { id: "basic", label: "Basic Info" },
+            { id: "education", label: "Education & Skills" },
+            { id: "experience", label: "Experience" },
+          ].map((tab) => (
+            <div
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              className="px-4 py-2 position-relative"
+              style={{
+                cursor: "pointer",
+                background:
+                  activeTab === tab.id ? "#E8E0FF" : "transparent",
+                color: activeTab === tab.id ? "#6B4EFF" : "#777",
+                fontWeight: activeTab === tab.id ? 600 : 500,
+                borderRadius: "5%", // Square tabs
+                transition: "all 0.2s ease",
+              }}
+            >
+              {tab.label}
+
+              {/* Orange dot is ALWAYS visible for Education tab */}
+              {tab.id === "education" && (
+                <span
+                  style={{
+                    position: "absolute",
+                    top: "8px",
+                    right: "10px",
+                    width: "8px",
+                    height: "8px",
+                    borderRadius: "50%",
+                    backgroundColor: "orange",
+                  }}
+                ></span>
+              )}
+            </div>
+          ))}
+        </div>
+
+        {/* Content */}
+        <div className="px-4 py-4">{renderTabContent()}</div>
       </Card>
     </Container>
   );
