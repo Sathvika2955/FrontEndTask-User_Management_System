@@ -48,8 +48,9 @@ html, body, #root {
 .table th {
   font-weight: 500;
   color: #6b7280;
-  background-color: #f9fafb;
+  background-color: #d3d3d3;  
 }
+
 .table td {
   vertical-align: middle;
   color: #374151;
@@ -79,16 +80,16 @@ html, body, #root {
 
 
 .profile-avatar {
+  background-color: #f0e8ff; /* light purple background */
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;                       
-  background: rgb(114, 83, 208,0.7);         
-  border: 1.5px solid #6834ff;            
-  width: 40px;
-  height: 40px;
-  box-sizing: border-box;
+  box-shadow: 0px 4px 8px rgba(54, 89, 226, 0.15);
 }
+
 
 
 
