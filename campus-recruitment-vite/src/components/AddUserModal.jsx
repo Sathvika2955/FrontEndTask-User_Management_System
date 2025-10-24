@@ -53,56 +53,64 @@ const AddUserModal = ({ handleClose, users, setUsers }) => {
     handleClose();
   };
 
-  return (
-    <Form onSubmit={handleSubmit}>
-      <Form.Group className="mb-3">
-        <Form.Label>Name of the user</Form.Label>
-        <Form.Control
-          type="text"
-          name="name"
-          placeholder="Type here"
-          value={newUserData.name}
-          onChange={handleChange}
-          required
-        />
-      </Form.Group>
-      <Row>
-        <Col>
-          <Form.Group className="mb-3">
-            <Form.Label>E-mail</Form.Label>
-            <Form.Control
-              type="email"
-              name="email"
-              placeholder="Type here"
-              value={newUserData.email}
-              onChange={handleChange}
-              required
-            />
-          </Form.Group>
-        </Col>
-        <Col>
-          <Form.Group className="mb-3">
-            <Form.Label>Contact</Form.Label>
-            <Form.Control
-              type="tel"
-              name="contact"
-              placeholder="Type here"
-              value={newUserData.contact}
-              onChange={handleChange}
-            />
-          </Form.Group>
-        </Col>
-      </Row>
-      <div className="d-flex justify-content-end">
-        <Button variant="secondary" className="me-2" onClick={handleClose}>
-          Cancel
-        </Button>
-        <Button variant="primary" type="submit">
-          Add
-        </Button>
-      </div>
-    </Form>
-  );
+return (
+  <div className="d-flex flex-column h-100">
+    {/* Scrollable form area */}
+    <div className="flex-grow-1 overflow-auto p-3">
+      <Form id="adduser-form" onSubmit={handleSubmit}>
+        <Form.Group className="mb-3">
+          <Form.Label>Name of the user</Form.Label>
+          <Form.Control
+            type="text"
+            name="name"
+            placeholder="Type here"
+            value={newUserData.name}
+            onChange={handleChange}
+            required
+          />
+        </Form.Group>
+        <Row>
+          <Col>
+            <Form.Group className="mb-3">
+              <Form.Label>E-mail</Form.Label>
+              <Form.Control
+                type="email"
+                name="email"
+                placeholder="Type here"
+                value={newUserData.email}
+                onChange={handleChange}
+                required
+              />
+            </Form.Group>
+          </Col>
+          <Col>
+            <Form.Group className="mb-3">
+              <Form.Label>Contact</Form.Label>
+              <Form.Control
+                type="tel"
+                name="contact"
+                placeholder="Type here"
+                value={newUserData.contact}
+                onChange={handleChange}
+              />
+            </Form.Group>
+          </Col>
+        </Row>
+      </Form>
+    </div>
+
+    {/* Sticky footer for buttons */}
+    <div className="adduser-actions-footer d-flex justify-content-end gap-2 p-3 bg-white border-top">
+      <Button variant="secondary" onClick={handleClose}>
+        Cancel
+      </Button>
+      <Button variant="primary" type="submit" form="adduser-form">
+        Add
+      </Button>
+    </div>
+  </div>
+);
+
 };
 
 export default AddUserModal;
