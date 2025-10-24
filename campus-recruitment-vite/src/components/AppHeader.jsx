@@ -16,14 +16,14 @@ const AppHeader = () => {
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
-      gap: "2px", // smaller gap between box and text
+      gap: "2px",
     },
     logoBox: {
       border: "2px solid #000",
       padding: "4px 12px",
       fontWeight: "900",
-      fontSize: "26px", // 🔹 bigger text
-      letterSpacing: "-2px", // 🔹 tighter spacing between letters
+      fontSize: "26px",
+      letterSpacing: "-2px",
       lineHeight: "1",
     },
     logoText: {
@@ -32,7 +32,7 @@ const AppHeader = () => {
     },
     logoTextP: {
       margin: 0,
-      fontSize: "6px", // small so box stands out
+      fontSize: "6px",
       fontWeight: "500",
       letterSpacing: "0.3px",
       color: "#444",
@@ -48,15 +48,37 @@ const AppHeader = () => {
       color: "#000",
       transition: "transform 0.2s ease, color 0.2s ease",
     },
+    bellIcon: {
+      fontSize: "20px",
+      cursor: "pointer",
+      color: "#0f0f0fff", // lavender
+      transition: "transform 0.2s ease, color 0.2s ease",
+    },
+    profileCircle: {
+      width: "36px",
+      height: "36px",
+      borderRadius: "50%",
+      backgroundColor: "rgba(128, 90, 213, 0.15)", // soft lavender circle
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      cursor: "pointer",
+      transition: "transform 0.2s ease",
+    },
   };
 
   const handleMouseEnter = (e) => {
     e.target.style.transform = "scale(1.1)";
-    e.target.style.color = "#007bff";
   };
   const handleMouseLeave = (e) => {
     e.target.style.transform = "scale(1)";
-    e.target.style.color = "#000";
+  };
+
+  const handleProfileEnter = (e) => {
+    e.currentTarget.style.transform = "scale(1.08)";
+  };
+  const handleProfileLeave = (e) => {
+    e.currentTarget.style.transform = "scale(1)";
   };
 
   return (
@@ -78,15 +100,17 @@ const AppHeader = () => {
           onMouseLeave={handleMouseLeave}
         />
         <FiBell
-          style={styles.icon}
+          style={styles.bellIcon} // lavender bell
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         />
-        <FiUser
-          style={styles.icon}
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-        />
+        <div
+          style={styles.profileCircle}
+          onMouseEnter={handleProfileEnter}
+          onMouseLeave={handleProfileLeave}
+        >
+          <FiUser size={20} color="#805AD5" strokeWidth={2.3} />
+        </div>
       </div>
     </header>
   );

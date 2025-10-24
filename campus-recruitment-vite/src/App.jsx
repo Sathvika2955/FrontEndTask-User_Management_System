@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css'; 
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'react-phone-input-2/lib/bootstrap.css';
 import './App.css'; 
 
 import { initialUsers } from './data/mockUsers'; 
@@ -8,7 +9,7 @@ import AppHeader from './components/AppHeader';
 import UserList from './pages/UserList';
 import ProfilePage from './pages/ProfilePage';
 
-const LOCAL_STORAGE_KEY = 'campusRecruitmentUsers';
+const LOCAL_STORAGE_KEY = 'front-end-task';
 
 function App() {
   const [users, setUsers] = useState(() => {

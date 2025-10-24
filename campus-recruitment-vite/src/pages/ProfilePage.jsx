@@ -15,6 +15,7 @@ const ProfilePage = ({ users, setUsers }) => {
   const initialData = users.find((u) => u.id === userId);
   const [profileData, setProfileData] = useState(initialData || {});
   const [loading, setLoading] = useState(true);
+  const [activeTab, setActiveTab] = useState('basic');
 
   useEffect(() => {
     if (initialData) {
@@ -64,7 +65,6 @@ const ProfilePage = ({ users, setUsers }) => {
     );
   }
 
- 
   const AvatarIcon = () => {
     return (
       <div className="profile-avatar">
@@ -84,37 +84,55 @@ const ProfilePage = ({ users, setUsers }) => {
     );
   };
 
+  // Helper for custom tab title with orange dot
+  const tabLabel = (label, eventKey) => (
+  <div style={{ position: "relative", display: "inline-block", paddingRight: 18 }}>
+    {eventKey === "education" && (
+      <span style={{
+        position: "absolute",
+        top: -5,
+        right: -8,
+        width: 12,
+        height: 12,
+        background: "#ff7d1a",
+        borderRadius: "50%",
+        zIndex: 1,
+        boxShadow: "0 0 0 2px #fff"
+      }} />
+    )}
+    <span>{label}</span>
+  </div>
+);
+
+
   return (
     <Container fluid className="py-4 px-5">
       <Card className="shadow-sm p-4">
         <Row className="mb-4 align-items-center border-bottom pb-3">
-      
+
           <Col xs="auto" className="me-4">
             <AvatarIcon />
           </Col>
 
-         
           <Col>
             <h3 className="mb-0">
               {profileData.firstName} {profileData.lastName}
             </h3>
             <div className="d-flex align-items-center gap-2">
-  <span className="mb-0">{profileData.email}</span>
-  {profileData.email && (
-    <FiCopy
-      size={18}
-      className="copy-email-icon"
-      onClick={() => navigator.clipboard.writeText(profileData.email)}
-      title="Copy email"
-      style={{ cursor: 'pointer', opacity: 0.75 }}
-    />
-  )}
-</div>
-
+              <span className="mb-0">{profileData.email}</span>
+              {profileData.email && (
+                <FiCopy
+                  size={18}
+                  className="copy-email-icon"
+                  onClick={() => navigator.clipboard.writeText(profileData.email)}
+                  title="Copy email"
+                  style={{ cursor: 'pointer', opacity: 0.75 }}
+                />
+              )}
+            </div>
             <p className="text-muted mb-0">{profileData.phone}</p>
           </Col>
 
-      
           <Col xs="auto">
             <Button variant="outline-secondary" onClick={handleProfileUpdate}>
               Save Changes
@@ -122,16 +140,28 @@ const ProfilePage = ({ users, setUsers }) => {
           </Col>
         </Row>
 
-        <Tabs defaultActiveKey="basic" id="profile-tabs" className="mb-4">
-          <Tab eventKey="basic" title="Basic Info">
+        <Tabs
+          id="profile-tabs"
+          className="mb-4"
+          activeKey={activeTab}
+          onSelect={(k) => setActiveTab(k)}
+        >
+          <Tab
+            eventKey="basic"
+            title={tabLabel("Basic Info", "basic")}
+          >
             <BasicDetailsForm data={profileData} setData={setProfileData} />
           </Tab>
-
-          <Tab eventKey="education" title="Education & Skills">
+          <Tab
+            eventKey="education"
+            title={tabLabel("Education & Skills", "education")}
+          >
             <EducationSkillsForm data={profileData} setData={setProfileData} />
           </Tab>
-
-          <Tab eventKey="experience" title="Experience">
+          <Tab
+            eventKey="experience"
+            title={tabLabel("Experience", "experience")}
+          >
             <ExperienceForm data={profileData} setData={setProfileData} />
           </Tab>
         </Tabs>

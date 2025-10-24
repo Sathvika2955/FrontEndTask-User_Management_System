@@ -1,8 +1,8 @@
 import React from 'react';
 import { Form, Row, Col, Card } from 'react-bootstrap';
 import { BiPencil } from 'react-icons/bi';
-import { FiCopy } from "react-icons/fi";
-
+import PhoneInput from 'react-phone-input-2';
+import 'react-phone-input-2/lib/bootstrap.css';
 
 const BasicDetailsForm = ({ data, setData }) => {
     
@@ -14,15 +14,23 @@ const BasicDetailsForm = ({ data, setData }) => {
         }));
     };
 
+    const handlePhoneChange = (value, country, e, formattedValue) => {
+        setData(prevData => ({
+            ...prevData,
+            phone: formattedValue,
+            phoneCountry: country.name,
+        }));
+    };
+
     return (
-        <Card className="p-4 border-0">
+        <Card className="p-4 border-0 shadow-sm">
             <Row className="mb-3 align-items-center">
-                 <Col>
+                <Col>
                     <h5 className="mb-0">Basic Details</h5>
-                 </Col>
-                 <Col xs="auto">
+                </Col>
+                <Col xs="auto">
                     <BiPencil size={18} className="text-muted cursor-pointer" />
-                 </Col>
+                </Col>
             </Row>
 
             <Form>
@@ -51,13 +59,13 @@ const BasicDetailsForm = ({ data, setData }) => {
                         <Form.Control 
                             type="email" 
                             name="email"
-                            placeholder="e.g. mmddbdy@gmail.com"
+                            placeholder="e.g. johndoe@gmail.com"
                             onChange={handleFieldChange}
                         />
                     </Col>
                 </Row>
 
-                {/* Second Row: Gender / Year of Birth / Phone / Alternate Phone */}
+                {/* Second Row: Year of Birth / Gender / Phone / Alternate Phone */}
                 <Row className="mb-3">
                     <Col md={3} className="mb-3 mb-md-0">
                         <Form.Label>Year of birth</Form.Label>
@@ -79,11 +87,11 @@ const BasicDetailsForm = ({ data, setData }) => {
                     </Col>
                     <Col md={3} className="mb-3 mb-md-0">
                         <Form.Label>Phone number</Form.Label>
-                        <Form.Control 
-                            type="tel" 
-                            name="phone"
-                            placeholder="+91 8331525695"
-                            onChange={handleFieldChange}
+                        <PhoneInput
+                            country={'in'}
+                            value={data.phone || ''}
+                            onChange={handlePhoneChange}
+                            inputStyle={{ width: '100%' }}
                         />
                     </Col>
                     <Col md={3}>
@@ -103,15 +111,15 @@ const BasicDetailsForm = ({ data, setData }) => {
                         <Form.Label>Address</Form.Label>
                         <Form.Control 
                             as="textarea"
-                            rows={3} 
+                            rows={5} 
                             name="address"
-                            placeholder="Enter here" 
+                            placeholder="Enter full address here..." 
                             onChange={handleFieldChange}
                         />
                     </Col>
                     <Col md={6}>
                         <Row>
-                             <Col sm={6} className="mb-3">
+                            <Col sm={6} className="mb-3">
                                 <Form.Label>Pincode</Form.Label>
                                 <Form.Control 
                                     type="text"
@@ -122,15 +130,15 @@ const BasicDetailsForm = ({ data, setData }) => {
                             </Col>
                             <Col sm={6} className="mb-3">
                                 <Form.Label>Domicile state</Form.Label>
-                                <Form.Select name="domicileState" onChange={handleFieldChange}>
-                                    <option >Select an option</option>
+                                <Form.Select name="domicileState" value={data.domicileState || ''} onChange={handleFieldChange}>
+                                    <option value="">Select an option</option>
                                     <option value="Maharashtra">Maharashtra</option>
                                     <option value="Karnataka">Karnataka</option>
                                 </Form.Select>
                             </Col>
                             <Col sm={6} className="mb-3">
                                 <Form.Label>Domicile country</Form.Label>
-                                <Form.Select name="domicileCountry"  onChange={handleFieldChange}>
+                                <Form.Select name="domicileCountry" value={data.domicileCountry || ''} onChange={handleFieldChange}>
                                     <option value="">Select an option</option>
                                     <option value="India">India</option>
                                     <option value="USA">USA</option>
