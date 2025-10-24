@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Container, Row, Col, Card, Button, Tabs, Tab } from 'react-bootstrap';
 import { BiPencil } from 'react-icons/bi';
+import { FiCopy } from "react-icons/fi";
 
 import BasicDetailsForm from '../components/BasicDetailsForm';
 import EducationSkillsForm from '../components/EducationSkillsForm';
@@ -97,7 +98,19 @@ const ProfilePage = ({ users, setUsers }) => {
             <h3 className="mb-0">
               {profileData.firstName} {profileData.lastName}
             </h3>
-            <p className="mb-0">{profileData.email}</p>
+            <div className="d-flex align-items-center gap-2">
+  <span className="mb-0">{profileData.email}</span>
+  {profileData.email && (
+    <FiCopy
+      size={18}
+      className="copy-email-icon"
+      onClick={() => navigator.clipboard.writeText(profileData.email)}
+      title="Copy email"
+      style={{ cursor: 'pointer', opacity: 0.75 }}
+    />
+  )}
+</div>
+
             <p className="text-muted mb-0">{profileData.phone}</p>
           </Col>
 

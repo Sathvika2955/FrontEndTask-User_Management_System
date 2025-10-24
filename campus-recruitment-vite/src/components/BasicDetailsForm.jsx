@@ -1,6 +1,8 @@
 import React from 'react';
 import { Form, Row, Col, Card } from 'react-bootstrap';
 import { BiPencil } from 'react-icons/bi';
+import { FiCopy } from "react-icons/fi";
+
 
 const BasicDetailsForm = ({ data, setData }) => {
     
