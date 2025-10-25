@@ -205,23 +205,24 @@ const ExperienceForm = () => {
         </Card>
       ))}
 
-      {/* ===== Add Work Experience Button ===== */}
-      {isEditable.workExperience && (
+      {/* ===== Add Work Experience Button (always active) ===== */}
+      <div className="d-flex justify-content-start mb-4">
         <Button
-          variant="outline-primary"
+          onClick={addExperience}
           className="d-flex align-items-center gap-2"
           style={{
-            borderColor: "#8b6dff",
-            color: "#8b6dff",
+            backgroundColor: "#E9E1FF", // light lavender
+            color: "#7B61FF", // bright lavender text
+            border: "none",
+            borderRadius: "10px",
             fontWeight: 500,
-            marginBottom: "2rem",
-            background: "transparent",
+            padding: "8px 16px",
+            fontSize: "0.95rem",
           }}
-          onClick={addExperience}
         >
           <AiOutlinePlus size={18} /> Add Work Experience
         </Button>
-      )}
+      </div>
 
       {/* ===== LinkedIn + Resume Row ===== */}
       <Row className="mt-2">
