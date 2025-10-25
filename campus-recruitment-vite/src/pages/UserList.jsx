@@ -28,7 +28,7 @@ const UserList = ({ users, setUsers, confirmAction, onViewUser }) => {
   return (
     <Container fluid className="py-4 px-5">
       <Card className="p-4 border-0 shadow-sm rounded-4">
-        {/* Header */}
+     
         <Row className="align-items-center mb-3">
           <Col>
             <h5 className="mb-0 fw-semibold">Users</h5>
@@ -115,7 +115,7 @@ const UserList = ({ users, setUsers, confirmAction, onViewUser }) => {
         )}
       </Card>
 
-      {/* Offcanvas (Add User Form) */}
+      
       <Offcanvas
         show={showOffcanvas}
         onHide={handleCloseOffcanvas}

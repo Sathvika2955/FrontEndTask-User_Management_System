@@ -18,12 +18,12 @@ const ExperienceForm = () => {
     resume: false,
   });
 
-  // Toggle section edit mode
+  
   const toggleEdit = (section) => {
     setIsEditable((prev) => ({ ...prev, [section]: !prev[section] }));
   };
 
-  // Handle input changes
+  
   const handleExperienceChange = (index, e) => {
     const { name, value } = e.target;
     const updatedExperiences = [...data.workExperience];
@@ -42,7 +42,7 @@ const ExperienceForm = () => {
     }
   };
 
-  // Add / Remove experience rows
+ 
   const addExperience = () => {
     setData((prev) => ({
       ...prev,
@@ -61,7 +61,7 @@ const ExperienceForm = () => {
 
   return (
     <div className="mt-4">
-      {/* ===== Work Experience Section ===== */}
+     
       <div className="d-flex align-items-center justify-content-between mb-3">
         <h5 style={{ fontWeight: 600, marginBottom: 0 }}>Work Experience</h5>
         <div
@@ -89,7 +89,7 @@ const ExperienceForm = () => {
         </div>
       </div>
 
-      {/* ===== Work Experience Cards ===== */}
+      
       {data.workExperience.map((exp, index) => (
         <Card
           key={index}
@@ -110,7 +110,7 @@ const ExperienceForm = () => {
             </Button>
           )}
 
-          {/* Domain - Full Width */}
+          
           <Row className="mb-3">
             <Col xs={12}>
               <Form.Label
@@ -137,7 +137,7 @@ const ExperienceForm = () => {
             </Col>
           </Row>
 
-          {/* Sub-domain + Experience - Side by Side */}
+         
           <Row>
             <Col md={8}>
               <div
@@ -146,7 +146,7 @@ const ExperienceForm = () => {
                   alignItems: "flex-start",
                 }}
               >
-                {/* Ash-colored vertical bar */}
+               
                 <div
                   style={{
                     height: 68,
@@ -158,8 +158,7 @@ const ExperienceForm = () => {
                     marginTop: 2,
                   }}
                 />
-                
-                {/* Label + Input in flex column */}
+             
                 <div style={{ flex: 1 }}>
                   <Form.Label
                     style={{
@@ -212,7 +211,7 @@ const ExperienceForm = () => {
         </Card>
       ))}
 
-      {/* ===== Add Work Experience Button (always active) ===== */}
+    
       <div className="d-flex justify-content-start mb-4">
         <Button
           onClick={addExperience}
@@ -231,9 +230,8 @@ const ExperienceForm = () => {
         </Button>
       </div>
 
-      {/* ===== LinkedIn + Resume Row ===== */}
       <Row className="mt-2">
-        {/* LinkedIn */}
+       
         <Col md={6}>
           <Card
             className="p-3 border-0 shadow-sm h-100"
@@ -303,7 +301,7 @@ const ExperienceForm = () => {
           </Card>
         </Col>
 
-        {/* Resume */}
+        
         <Col md={6}>
           <Card
             className="p-3 border-0 shadow-sm h-100"

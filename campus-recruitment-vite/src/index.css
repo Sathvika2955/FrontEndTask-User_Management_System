@@ -80,7 +80,7 @@ html, body, #root {
 
 
 .profile-avatar {
-  background-color: #f0e8ff; /* light purple background */
+  background-color: #f0e8ff; 
   border-radius: 50%;
   width: 56px;
   height: 56px;
@@ -95,7 +95,7 @@ html, body, #root {
 
 
 
-/* Tabs */
+
 .nav-tabs {
   border-bottom: 1px solid #dee2e6;
 }
