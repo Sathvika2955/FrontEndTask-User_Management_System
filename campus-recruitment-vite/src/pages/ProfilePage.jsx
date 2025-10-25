@@ -26,7 +26,7 @@ const ProfilePage = ({ users, setUsers }) => {
     }
   };
 
-  // 🟣 Avatar Component (hover-based, centered pencil)
+
   const AvatarIcon = () => {
     const [preview, setPreview] = useState(profileData.profileImage || null);
     const [hovered, setHovered] = useState(false);
@@ -46,7 +46,7 @@ const ProfilePage = ({ users, setUsers }) => {
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
       >
-        {/* Profile Circle */}
+        
         <div
           className="d-flex align-items-center justify-content-center"
           style={{
@@ -74,7 +74,7 @@ const ProfilePage = ({ users, setUsers }) => {
               }}
             />
           ) : (
-            // Default placeholder (light purple)
+        
             <svg
               width="56"
               height="56"
@@ -89,7 +89,7 @@ const ProfilePage = ({ users, setUsers }) => {
             </svg>
           )}
 
-          {/* ✏️ Pencil (visible only on hover) */}
+    
           {hovered && (
             <label
               htmlFor="profile-upload"
@@ -108,7 +108,7 @@ const ProfilePage = ({ users, setUsers }) => {
               }}
               title="Change profile picture"
             >
-              {/* Modern outlined pencil icon */}
+              
               <svg
                 width="22"
                 height="22"
@@ -124,7 +124,7 @@ const ProfilePage = ({ users, setUsers }) => {
             </label>
           )}
 
-          {/* Hidden File Input */}
+          
           <input
             type="file"
             id="profile-upload"
@@ -137,7 +137,7 @@ const ProfilePage = ({ users, setUsers }) => {
     );
   };
 
-  // 🧩 Tabs + Forms Rendering
+
   const renderTabContent = () => {
     switch (activeTab) {
       case "basic":
@@ -163,7 +163,7 @@ const ProfilePage = ({ users, setUsers }) => {
           backgroundColor: "#fff",
         }}
       >
-        {/* Header */}
+       
         <Row className="align-items-center border-bottom px-4 py-4">
           <Col xs="auto">
             <AvatarIcon />
@@ -201,7 +201,7 @@ const ProfilePage = ({ users, setUsers }) => {
           </Col>
         </Row>
 
-        {/* Tabs */}
+       
         <div
           className="d-flex justify-content-start gap-3 border-bottom px-4 pt-3 pb-2"
           style={{ background: "#fff" }}
@@ -227,7 +227,7 @@ const ProfilePage = ({ users, setUsers }) => {
             >
               {tab.label}
 
-              {/* Orange dot (always visible for Education) */}
+              
               {tab.id === "education" && (
                 <span
                   style={{
@@ -245,7 +245,7 @@ const ProfilePage = ({ users, setUsers }) => {
           ))}
         </div>
 
-        {/* Content */}
+    
         <div className="px-4 py-4">{renderTabContent()}</div>
       </Card>
     </Container>

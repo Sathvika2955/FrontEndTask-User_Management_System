@@ -144,7 +144,7 @@ const BasicDetailsForm = ({ data, setData }) => {
                     </Col>
                 </Row>
 
-                {/* Third Row */}
+            
                 <Row className="mb-3">
                     <Col md={6} className="mb-3 mb-md-0">
                         <Form.Label>Address</Form.Label>

@@ -6,7 +6,7 @@ import { BiPencil } from 'react-icons/bi';
 
 const EducationSkillsForm = ({ data, setData }) => {
 
-    // --- Education Handlers ---
+    
     const handleEducationChange = (index, e) => {
         const { name, value } = e.target;
         const updatedEducation = data.education.map((item, i) => 
@@ -24,7 +24,7 @@ const EducationSkillsForm = ({ data, setData }) => {
         setData(prevData => ({ ...prevData, education: updatedEducation }));
     };
 
-    // --- Skills/Projects Handlers ---
+   
     const handleSkillsChange = (e) => {
         const skillsArray = e.target.value.split(',').map(s => s.trim()).filter(s => s.length > 0);
         setData(prevData => ({ ...prevData, skills: skillsArray }));
@@ -48,7 +48,7 @@ const EducationSkillsForm = ({ data, setData }) => {
             </Row>
 
             <Form>
-                {/* Education Repeater Block */}
+            
                 {data.education && data.education.map((edu, index) => (
                     <Card key={index} className="mb-4 p-3 bg-light position-relative">
                         <Button 

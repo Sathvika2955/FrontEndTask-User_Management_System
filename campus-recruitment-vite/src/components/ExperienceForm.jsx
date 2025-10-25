@@ -110,54 +110,63 @@ const ExperienceForm = () => {
             </Button>
           )}
 
+          {/* Domain - Full Width */}
+          <Row className="mb-3">
+            <Col xs={12}>
+              <Form.Label
+                style={{
+                  fontWeight: 500,
+                  fontSize: "0.95rem",
+                  color: "#333",
+                }}
+              >
+                Domain
+              </Form.Label>
+              <Form.Control
+                name="domain"
+                placeholder="e.g. Technology"
+                value={exp.domain}
+                onChange={(e) => handleExperienceChange(index, e)}
+                disabled={!isEditable.workExperience}
+                style={{
+                  background: "#fff",
+                  height: "44px",
+                  borderColor: "#ddd",
+                }}
+              />
+            </Col>
+          </Row>
+
+          {/* Sub-domain + Experience - Side by Side */}
           <Row>
-            {/* Domain + Sub-domain */}
             <Col md={8}>
               <div
                 style={{
-                  border: "1px solid #e0e0e0",
-                  borderRadius: 12,
-                  padding: "16px 18px",
-                  background: "#f8f8fc",
+                  display: "flex",
+                  alignItems: "flex-start",
                 }}
               >
-                <Form.Label
-                  style={{
-                    fontWeight: 500,
-                    fontSize: "0.95rem",
-                    color: "#333",
-                  }}
-                >
-                  Domain
-                </Form.Label>
-                <Form.Control
-                  name="domain"
-                  placeholder="e.g. Technology"
-                  value={exp.domain}
-                  onChange={(e) => handleExperienceChange(index, e)}
-                  disabled={!isEditable.workExperience}
-                  style={{
-                    background: "#fff",
-                    height: "44px",
-                    borderColor: "#ddd",
-                    width: "97%",
-                  }}
-                />
-
-                {/* Sub-domain inside grey section */}
+                {/* Ash-colored vertical bar */}
                 <div
                   style={{
-                    marginTop: 16,
-                    marginLeft: 12,
-                    paddingLeft: 12,
-                    borderLeft: "3px solid #d0d0d0",
+                    height: 68,
+                    minWidth: 5,
+                    borderRadius: 4,
+                    background: "#c0c0c0",
+                    marginRight: 10,
+                    opacity: 0.8,
+                    marginTop: 2,
                   }}
-                >
+                />
+                
+                {/* Label + Input in flex column */}
+                <div style={{ flex: 1 }}>
                   <Form.Label
                     style={{
                       fontWeight: 500,
                       fontSize: "0.9rem",
                       color: "#555",
+                      marginBottom: 6,
                     }}
                   >
                     Sub-domain
@@ -170,17 +179,15 @@ const ExperienceForm = () => {
                     disabled={!isEditable.workExperience}
                     style={{
                       background: "#fff",
-                      height: "40px",
+                      height: "44px",
                       borderColor: "#ddd",
-                      width: "88%",
                     }}
                   />
                 </div>
               </div>
             </Col>
 
-            {/* Experience Dropdown */}
-            <Col md={4} className="align-self-end">
+            <Col md={4}>
               <Form.Label style={{ fontWeight: 500, color: "#333" }}>
                 Experience
               </Form.Label>
@@ -211,8 +218,8 @@ const ExperienceForm = () => {
           onClick={addExperience}
           className="d-flex align-items-center gap-2"
           style={{
-            backgroundColor: "#E9E1FF", // light lavender
-            color: "#7B61FF", // bright lavender text
+            backgroundColor: "#E9E1FF",
+            color: "#7B61FF",
             border: "none",
             borderRadius: "10px",
             fontWeight: 500,

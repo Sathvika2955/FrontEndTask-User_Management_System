@@ -1,4 +1,4 @@
-// Default structure for Education and Experience entries
+
 const defaultEducationEntry = {
     college: 'e.g. Lincoln College', 
     course: 'e.g. Computer science engineering', 
@@ -10,13 +10,12 @@ const defaultEducationEntry = {
 const defaultExperienceEntry = {
     domain: 'e.g. Technology', 
     subDomain: 'e.g. MERN Stack', 
-    experience: '' // Will be populated by select
+    experience: '' 
 };
 
 export const initialUsers = [
     {
         id: 1,
-        // Basic Details
         firstName: "Dave",
         lastName: "Richards",
         email: "dave@mail.com",
@@ -28,7 +27,7 @@ export const initialUsers = [
         domicileState: "Maharashtra",
         domicileCountry: "India",
 
-        // Education Details (WhatsApp Image 2025-10-22 at 23.06.45.jpeg)
+        
         education: [
             {
                 college: "MIT College of Engineering",
@@ -39,16 +38,16 @@ export const initialUsers = [
             },
         ],
         
-        // Skills & Projects
+       
         skills: ["React", "Bootstrap", "JavaScript", "Redux"],
         projects: ["Campus Portal Project", "E-commerce Checkout"],
         
-        // Work Experience (WhatsApp Image 2025-10-22 at 23.06.54.jpeg)
+   
         workExperience: [
             { domain: "IT Services", subDomain: "MERN Stack", experience: "2 years" },
         ],
         
-        // Links
+   
         linkedinUrl: "linkedin.com/in/daverichards",
         resumeUrl: "myresume.pdf",
     },

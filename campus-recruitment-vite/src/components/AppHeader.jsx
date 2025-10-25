@@ -51,14 +51,14 @@ const AppHeader = () => {
     bellIcon: {
       fontSize: "20px",
       cursor: "pointer",
-      color: "#0f0f0fff", // lavender
+      color: "#0f0f0fff", 
       transition: "transform 0.2s ease, color 0.2s ease",
     },
     profileCircle: {
       width: "36px",
       height: "36px",
       borderRadius: "50%",
-      backgroundColor: "rgba(128, 90, 213, 0.15)", // soft lavender circle
+      backgroundColor: "rgba(128, 90, 213, 0.15)", 
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
@@ -83,7 +83,7 @@ const AppHeader = () => {
 
   return (
     <header style={styles.header}>
-      {/* Logo Section */}
+      
       <div style={styles.logoContainer}>
         <div style={styles.logoBox}>LOGO</div>
         <div style={styles.logoText}>
@@ -92,7 +92,7 @@ const AppHeader = () => {
         </div>
       </div>
 
-      {/* Icons Section */}
+     
       <div style={styles.icons}>
         <MdOutlineHeadsetMic
           style={styles.icon}
@@ -100,7 +100,7 @@ const AppHeader = () => {
           onMouseLeave={handleMouseLeave}
         />
         <FiBell
-          style={styles.bellIcon} // lavender bell
+          style={styles.bellIcon} 
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         />

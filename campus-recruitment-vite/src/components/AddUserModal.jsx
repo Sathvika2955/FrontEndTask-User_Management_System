@@ -53,15 +53,15 @@ const AddUserModal = ({ handleClose, users, setUsers }) => {
     handleClose();
   };
 
-  // Custom color styles
+  
   const styles = {
     cancelButton: {
-      backgroundColor: '#E9E1FF', // light lavender
-      color: '#5A4FCF', // slightly darker text for contrast
+      backgroundColor: '#E9E1FF', 
+      color: '#5A4FCF', 
       border: 'none',
     },
     addButton: {
-      backgroundColor: '#7B61FF', // bright lavender
+      backgroundColor: '#7B61FF', 
       color: 'white',
       border: 'none',
     }
@@ -69,7 +69,7 @@ const AddUserModal = ({ handleClose, users, setUsers }) => {
 
   return (
     <div className="d-flex flex-column h-100">
-      {/* Scrollable form area */}
+    
       <div className="flex-grow-1 overflow-auto p-3">
         <Form id="adduser-form" onSubmit={handleSubmit}>
           <Form.Group className="mb-3">
@@ -112,8 +112,6 @@ const AddUserModal = ({ handleClose, users, setUsers }) => {
           </Row>
         </Form>
       </div>
-
-      {/* Sticky footer for buttons */}
       <div className="adduser-actions-footer d-flex justify-content-end gap-2 p-3 bg-white border-top">
         <Button
           style={styles.cancelButton}
